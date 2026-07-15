@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Focus Caravaning Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Focus Caravaning 2026</p>
+          <h1 id="headline">Zulassungszahlen</h1>
+          <p id="subline" class="subline">Aktueller Stand wird geladen</p>
+        </div>
+        <div class="source">
+          <span>Quelle</span>
+          <strong id="sourceLabel">Kraftfahrt-Bundesamt</strong>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Dashboard-Auswahl">
+        <div class="segmented" role="group" aria-label="Kennzahl">
+          <button class="segment is-active" data-field="kennzahl" data-value="Neuzulassungen">Neuzulassungen</button>
+          <button class="segment" data-field="kennzahl" data-value="Besitzumschreibungen">Besitzumschreibungen</button>
+        </div>
+        <div class="segmented" role="group" aria-label="Fahrzeugart">
+          <button class="segment is-active" data-field="fahrzeugart" data-value="Wohnmobile">Wohnmobile</button>
+          <button class="segment" data-field="fahrzeugart" data-value="Wohnwagen">Wohnwagen</button>
+        </div>
+        <label class="period-control">
+          <span>Auswertungsstand</span>
+          <select id="periodSelect" aria-label="Auswertungsstand"></select>
+        </label>
+      </section>
+
+      <section class="dashboard" aria-live="polite">
+        <aside class="kpi-column">
+          <article class="kpi kpi-primary">
+            <span class="label">Aktueller Monat</span>
+            <strong id="currentValue">-</strong>
+            <span id="currentLabel" class="hint">-</span>
+            <span id="currentDelta" class="delta">-</span>
+          </article>
+
+          <article class="kpi">
+            <span class="label">Kumuliert</span>
+            <strong id="ytdValue">-</strong>
+            <span id="ytdLabel" class="hint">-</span>
+            <span id="ytdDelta" class="delta">-</span>
+          </article>
+
+          <article class="kpi compact">
+            <span class="label">12 Monate</span>
+            <strong id="rollingValue">-</strong>
+            <span id="rollingDelta" class="delta">-</span>
+          </article>
+        </aside>
+
+        <section class="chart-grid">
+          <article class="panel panel-large">
+            <div class="panel-header">
+              <div>
+                <h2>Monatliche Entwicklung</h2>
+                <p id="monthlyCaption">Aktuelles Jahr im Vergleich zum Vorjahr</p>
+              </div>
+              <div class="legend">
+                <span><i class="swatch blue"></i><b id="legendCurrent">2026</b></span>
+                <span><i class="swatch gray"></i><b id="legendPrevious">2025</b></span>
+              </div>
+            </div>
+            <div id="monthlyChart" class="chart" role="img" aria-label="Monatliche Entwicklung"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Trend</h2>
+                <p id="trendCaption">Jahressummen und aktueller Zwischenstand</p>
+              </div>
+            </div>
+            <div id="trendChart" class="chart trend" role="img" aria-label="Trend der letzten Jahre"></div>
+          </article>
+        </section>
+      </section>
+
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
